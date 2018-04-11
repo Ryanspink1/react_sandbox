@@ -5,11 +5,15 @@ import FoodList from './FoodList';
 import { getFoods } from '../utils/requests';
 
 class App extends Component {
-  constructor(props){
-    super(props);
+  constructor() {
+    super()
     this.state = {
       foods: []
     }
+  }
+
+  updateFoods = (name, calories) => {
+    this.setState({ foods: [...this.state.foods, { name, calories }] })
   }
 
   componentDidMount() {
@@ -21,8 +25,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <FoodList foods={ this.state.food }/>
-        <Food Form />
+        <h1 className="my-foods-header">Manage Foods</h1>
+        <FoodList foods={ this.state.foods } />
+        <FoodForm updateFoods={ this.updateFoods } />
       </div>
     );
   }

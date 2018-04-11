@@ -1,27 +1,28 @@
 import React from 'react';
+import FoodCard from './FoodCard';
 import '../styles/FoodList.css';
 
-class FoodList extends Component {
-  let foods = this.props.foods;
-  let mappedFoods = foods.map((food) => {
-    return(
-      <div className="food-row">
-        <p className="food-name">{ food.name }</p>
-        <p className="food-calories">{ food.caloris }</p>
-      </div>
+const createFoodCards = (foods) => {
+  return foods.map((food) => {
+    return (
+      <FoodCard
+        key={ food.id }
+        food={ food }/>
     )
   })
-  render() {
-    return (
-      <div className="food-list">
-        <div className="food-row title-row">
-          <p className="food-name title">Food</p>
-          <p className="food-calories title">Calories</p>
-        </div>
-        { mappedFoods }
-      </div>
-    )
-  }
 }
+
+const FoodList = ({ foods }) => {
+  return (
+    <div className="food-list">
+      <div className="food-row title-row">
+        <p className="food-name title">Food</p>
+        <p className="food-calories title">Calories</p>
+      </div>
+      { createFoodCards(foods) }
+    </div>
+  );
+}
+
 
 export default FoodList;
