@@ -31,3 +31,8 @@ const addFoods = (foodName, foodCalories) => {
     .then((response) => handleResponse(response))
     .catch((error) => console.error({ error }))
 }
+
+module.exports = {
+  getFoods,
+  addFoods,
+};
